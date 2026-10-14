@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pickadeli - Comida peruana saludable, fresca y deliciosa. Conoce más sobre nuestro menú, locales y talleres.">
+  <title>Pickadeli | Comida Saludable & Fresca</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1) NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      
+      <!-- IZQUIERDA: Saludo al usuario logueado -->
+      <div class="user-greeting" id="btn-profile" role="button" tabindex="0" title="Ver mi perfil">
+        <div class="user-avatar">D</div>
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="user-name">Hola, <strong>Daniela</strong></span>
+          <span class="user-points-badge" id="nav-points-badge">⭐ 0 pts</span>
+        </div>
+      </div>
+
+      <!-- CENTRO: Logo PICKADELI -->
+      <a href="#inicio" class="logo" aria-label="Pickadeli Inicio">
+        <span class="logo-icon" aria-hidden="true">🥗</span>
+        <span class="logo-text">PICKADELI</span>
+      </a>
+
+      <!-- BOTÓN HAMBURGUESA (Móvil) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- DERECHA: Menú de navegación -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li class="nav-item"><a href="#menu" class="nav-link">Menú</a></li>
+          <li class="nav-item"><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li class="nav-item"><a href="#locales" class="nav-link">Locales</a></li>
+          <li class="nav-item"><a href="#eventos" class="nav-link">Workshops &amp; Eventos</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- 2) HERO SECTION -->
+    <section class="hero-section" id="inicio">
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <span class="hero-badge">🌿 Vida Saludable &amp; Sabor Peruano</span>
+          <h1 class="hero-title">CONOCE MÁS DE NOSOTROS</h1>
+          <p class="hero-subtitle">¿TE GUSTA NUESTRA COMIDA? TE GUSTARÁN MÁS QUIÉNES LA PREPARAN</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary" id="btn-ver-menu">
+              <span>Ver Menú</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-glow"></div>
+          <div class="hero-card-floating card-float-1">
+            <span class="food-emoji">🥑</span>
+            <span class="float-tag">100% Fresco</span>
+          </div>
+          <div class="hero-card-floating card-float-2">
+            <span class="food-emoji">🥗</span>
+            <span class="float-tag">Bowl del Día</span>
+          </div>
+          <div class="hero-card-floating card-float-3">
+            <span class="food-emoji">🍓</span>
+            <span class="float-tag">Superfoods</span>
+          </div>
+          <div class="hero-center-badge">
+            <div class="badge-ring"></div>
+            <div class="badge-core">
+              <span class="badge-icon">🌱</span>
+              <span class="badge-text">Come Bien, Siéntete Increíble</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3) SECCIÓN DE BLOQUES -->
+    <section class="blocks-section" id="nosotros">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Explora Pickadeli</h2>
+          <p class="section-description">Descubre nuestros espacios, nuestro equipo y todas las experiencias que preparamos para ti.</p>
+        </div>
+
+        <div class="blocks-grid">
+          
+          <!-- Bloque 1 -->
+          <article class="block-card">
+            <div class="card-icon-wrapper" aria-hidden="true">
+              <span class="card-icon">👨‍🍳</span>
+            </div>
+            <h3 class="card-title">CONOCE MÁS DE NUESTROS NOSOTROS</h3>
+            <p class="card-text">¿TE GUSTA NUESTRA COMIDA? TE GUSTARÁN MÁS QUIÉNES LA PREPARAN</p>
+            <div class="card-footer">
+              <span class="card-link">Descubrir equipo &rarr;</span>
+            </div>
+          </article>
+
+          <!-- Bloque 2 -->
+          <article class="block-card">
+            <div class="card-icon-wrapper" aria-hidden="true">
+              <span class="card-icon">📍</span>
+            </div>
+            <h3 class="card-title">HAY UN PICKADELI CERCA DE TI</h3>
+            <p class="card-text">INGRESA Y CONOCE NUESTRA LISTA DE LOCALES</p>
+            <div class="card-footer">
+              <span class="card-link">Ver locales &rarr;</span>
+            </div>
+          </article>
+
+          <!-- Bloque 3 -->
+          <article class="block-card">
+            <div class="card-icon-wrapper" aria-hidden="true">
+              <span class="card-icon">🎉</span>
+            </div>
+            <h3 class="card-title">WORKSHOPS &amp; EVENTOS</h3>
+            <p class="card-text">CONOCE CÓMO NOS DIVERTIMOS JUNTO A NUESTROS PICKERS</p>
+            <div class="card-footer">
+              <span class="card-link">Ver agenda &rarr;</span>
+            </div>
+          </article>
+
+          <!-- Bloque 4: Tarjeta real del Quiz & Preguntas -->
+          <article class="block-card quiz-card" id="quiz-block">
+            <div class="card-icon-wrapper quiz-icon-wrapper" aria-hidden="true">
+              <span class="card-icon">🧠</span>
+            </div>
+            <h3 class="card-title">QUIZ &amp; PREGUNTAS</h3>
+            <p class="card-text">Pon a prueba tus conocimientos sobre nuestro menú y gana puntos para canjear por promos y descuentos.</p>
+            <div class="card-footer card-footer-full">
+              <button class="btn btn-quiz-block" id="btn-open-quiz" type="button">
+                <span>🎮 Comenzar Quiz</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 4) FOOTER -->
+  <footer class="footer">
+    <div class="footer-container container">
+      
+      <!-- Columna 1 -->
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon" aria-hidden="true">🥗</span>
+          <span class="logo-text">PICKADELI</span>
+        </div>
+        <p class="footer-tagline">Comida rica, vida sana.</p>
+        <p class="footer-desc">El auténtico sabor peruano reinventado en propuestas saludables, frescas y llenas de energía.</p>
+      </div>
+
+      <!-- Columna 2 -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Síguenos</h4>
+        <ul class="social-list">
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon">📷</span>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon">👍</span>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="social-icon">🎵</span>
+              <span>TikTok</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Columna 3 -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Contacto</h4>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <a href="mailto:hola@pickadeli.pe" class="contact-link">hola@pickadeli.pe</a>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">📞</span>
+            <a href="tel:+51987654321" class="contact-link">+51 (01) 456-7890</a>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Lima, Perú</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Línea inferior de copyright -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Pickadeli. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DEL QUIZ -->
+  <div class="quiz-modal-overlay" id="quiz-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
+    <div class="quiz-modal-card">
+      
+      <!-- Botón X para cerrar modal -->
+      <button class="modal-close-btn" id="btn-quiz-close-x" aria-label="Cerrar Quiz">✕</button>
+
+      <!-- PANTALLA 1: INICIO -->
+      <section class="quiz-screen active" id="quiz-screen-start">
+        <div class="quiz-start-header">
+          <div class="quiz-badge-icon" aria-hidden="true">🍽️</div>
+          <h2 class="quiz-title" id="quiz-modal-title">Quiz Pickadeli</h2>
+          <p class="quiz-subtitle">5 preguntas • 20 puntos cada una • ¡100 puntos en juego!</p>
+        </div>
+
+        <div class="quiz-start-body">
+          <div class="quiz-info-box">
+            <span class="info-icon">💡</span>
+            <p class="quiz-instructions">Responde correctamente sobre nuestro menú y acumula puntos para canjear descuentos.</p>
+          </div>
+          
+          <div class="quiz-perks">
+            <div class="perk-item">
+              <span class="perk-icon">⏱️</span>
+              <span>Sin límite de tiempo</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon">🏆</span>
+              <span>Hasta 100 puntos acumulables</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-actions-stacked">
+          <button class="btn btn-primary btn-pulse w-full" id="btn-quiz-start" type="button">
+            <span>🚀 Comenzar</span>
+          </button>
+          <button class="btn btn-outline w-full" id="btn-quiz-close-start" type="button">
+            <span>Cerrar</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- PANTALLA 2: PREGUNTA (Una a la vez) -->
+      <section class="quiz-screen" id="quiz-screen-question">
+        <!-- Barra de progreso -->
+        <div class="quiz-progress-wrapper">
+          <div class="quiz-progress-header">
+            <span class="quiz-counter" id="quiz-question-counter">Pregunta 1 de 5</span>
+            <span class="quiz-progress-pts">20 pts c/u</span>
+          </div>
+          <div class="quiz-progress-track">
+            <div class="quiz-progress-bar" id="quiz-progress-bar" style="width: 20%;"></div>
+          </div>
+        </div>
+
+        <!-- Pregunta actual -->
+        <div class="quiz-question-box">
+          <!-- Feedback visual flotante (+20 pts) -->
+          <div class="floating-feedback" id="quiz-floating-feedback" aria-hidden="true">+20 pts</div>
+          
+          <h3 class="quiz-question-text" id="quiz-question-title">¿Cargando pregunta?</h3>
+        </div>
+
+        <!-- 4 Opciones de respuesta -->
+        <div class="quiz-options-list" id="quiz-options-container" role="radiogroup">
+          <!-- Se llenan dinámicamente con JS -->
+        </div>
+
+        <!-- Pie con botón Siguiente -->
+        <div class="quiz-question-footer">
+          <button class="btn btn-primary btn-next-question" id="btn-quiz-next" type="button" disabled>
+            <span>Siguiente →</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- PANTALLA 3: RESULTADOS -->
+      <section class="quiz-screen" id="quiz-screen-results">
+        <!-- Confetti container para puntaje perfecto -->
+        <div class="confetti-container" id="quiz-confetti-container" aria-hidden="true"></div>
+
+        <div class="quiz-results-header">
+          <div class="results-trophy-icon" id="quiz-results-icon" aria-hidden="true">🎉</div>
+          <h2 class="quiz-title">¡Quiz completado!</h2>
+        </div>
+
+        <!-- Contador animado de puntaje -->
+        <div class="quiz-score-card">
+          <span class="score-label">Puntaje obtenido</span>
+          <div class="score-number-wrapper">
+            <span class="score-animated-number" id="quiz-final-score">0</span>
+            <span class="score-total">/ 100 pts</span>
+          </div>
+          <p class="score-feedback-text" id="quiz-result-message">¡Calculando resultados!</p>
+        </div>
+
+        <!-- Resumen de aciertos/fallos -->
+        <div class="quiz-review-section">
+          <h4 class="review-heading">Detalle de respuestas:</h4>
+          <div class="quiz-summary-list" id="quiz-summary-list">
+            <!-- Se llena dinámicamente con JS -->
+          </div>
+        </div>
+
+        <div class="quiz-actions-row">
+          <button class="btn btn-outline" id="btn-quiz-close-results" type="button">
+            <span>Cerrar</span>
+          </button>
+          <button class="btn btn-primary" id="btn-quiz-retry" type="button">
+            <span>🔄 Jugar de nuevo</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- MODAL DE PERFIL DE USUARIO DANIELA -->
+  <div class="profile-modal-overlay" id="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profile-user-name">
+    <div class="profile-modal-card">
+      
+      <!-- Botón de cerrar X -->
+      <button class="modal-close-btn profile-close-btn" id="btn-profile-close-x" aria-label="Cerrar perfil">✕</button>
+
+      <!-- PASO 1: Header del Perfil -->
+      <div class="profile-header">
+        <div class="profile-avatar-large">D</div>
+        <div class="profile-header-info">
+          <div class="profile-name-row">
+            <h2 class="profile-user-name" id="profile-user-name">Daniela Ramírez</h2>
+            <span class="profile-level-badge" id="profile-level-badge">🌟 Picker Nivel 2</span>
+          </div>
+          <p class="profile-email">daniela.ramirez@email.com</p>
+        </div>
+      </div>
+
+      <!-- Cuerpo del Perfil -->
+      <div class="profile-body">
+        
+        <!-- PASO 2: Sección de Puntos Destacada -->
+        <section class="profile-points-card">
+          <div class="points-card-header">
+            <div class="points-icon-wrapper">⭐</div>
+            <div class="points-card-titles">
+              <h3 class="points-card-title">Mis Puntos Pickadeli</h3>
+              <p class="points-card-desc">Gana puntos jugando el Quiz y canjéalos por descuentos exclusivos.</p>
+            </div>
+          </div>
+          <div class="points-counter-box">
+            <span class="points-animated-number" id="profile-points-display">0</span>
+            <span class="points-unit">puntos disponibles</span>
+          </div>
+        </section>
+
+        <!-- PASO 3: Información Personal -->
+        <section class="profile-section">
+          <h3 class="profile-section-title">Información Personal</h3>
+          <div class="personal-info-grid">
+            <div class="info-card">
+              <span class="info-card-icon">📧</span>
+              <div class="info-card-content">
+                <span class="info-card-label">Email</span>
+                <span class="info-card-val">daniela.ramirez@email.com</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-card-icon">📱</span>
+              <div class="info-card-content">
+                <span class="info-card-label">Teléfono</span>
+                <span class="info-card-val">+51 987 654 321</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-card-icon">📍</span>
+              <div class="info-card-content">
+                <span class="info-card-label">Dirección</span>
+                <span class="info-card-val">Av. Los Álamos 123, Lima, Perú</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-card-icon">🎂</span>
+              <div class="info-card-content">
+                <span class="info-card-label">Cumpleaños</span>
+                <span class="info-card-val">15 de marzo</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PASO 4: Recompensas / Canje -->
+        <section class="profile-section">
+          <h3 class="profile-section-title">Recompensas Disponibles</h3>
+          
+          <!-- Tarjeta de canje de 10% -->
+          <div class="reward-main-card">
+            <div class="reward-badge-ribbon">⭐ Canje Activo</div>
+            <div class="reward-main-header">
+              <div class="reward-icon">🎟️</div>
+              <div class="reward-main-info">
+                <h4 class="reward-name">Vale de 10% de descuento</h4>
+                <p class="reward-desc">Canjea 50 puntos y obtén un 10% de descuento en tu próximo pedido.</p>
+                <div class="reward-cost">Costo: <strong>50 puntos</strong></div>
+              </div>
+            </div>
+
+            <!-- Acciones y estado -->
+            <div class="reward-actions">
+              <p class="reward-status-msg" id="reward-status-msg">Verificando puntos...</p>
+              <button class="btn btn-primary btn-redeem" id="btn-redeem-coupon" type="button">
+                <span>Canjear</span>
+              </button>
+            </div>
+
+            <!-- Contenedor animado de celebración al canjear -->
+            <div class="coupon-success-card" id="coupon-success-card" style="display: none;">
+              <div class="coupon-success-header">
+                <span>🎉 ¡Vale canjeado con éxito!</span>
+              </div>
+              <div class="coupon-code-display">
+                <span class="coupon-code-label">Tu código de descuento:</span>
+                <strong class="coupon-code-value" id="new-coupon-code">PICKA-0000</strong>
+              </div>
+              <p class="coupon-hint">Presenta este código en caja o úsalo en tu próxima visita.</p>
+            </div>
+          </div>
+
+          <!-- Historial de vales canjeados -->
+          <div class="claimed-coupons-wrapper" id="claimed-coupons-wrapper" style="display: none;">
+            <h4 class="sub-section-title">Mis Vales Canjeados:</h4>
+            <div class="coupons-list" id="coupons-list">
+              <!-- Se llena dinámicamente -->
+            </div>
+          </div>
+
+          <!-- PASO 5: Otras recompensas (bloqueadas/próximamente) -->
+          <h4 class="sub-section-title mt-4">Próximos Beneficios:</h4>
+          <div class="locked-rewards-grid">
+            <div class="locked-reward-card">
+              <span class="locked-badge">🔒 Próximamente</span>
+              <div class="locked-reward-icon">🥤</div>
+              <h5 class="locked-reward-name">Bebida gratis</h5>
+              <span class="locked-reward-pts">80 puntos</span>
+            </div>
+            <div class="locked-reward-card">
+              <span class="locked-badge">🔒 Próximamente</span>
+              <div class="locked-reward-icon">🍰</div>
+              <h5 class="locked-reward-name">Postre gratis</h5>
+              <span class="locked-reward-pts">120 puntos</span>
+            </div>
+            <div class="locked-reward-card">
+              <span class="locked-badge">🔒 Próximamente</span>
+              <div class="locked-reward-icon">🎁</div>
+              <h5 class="locked-reward-name">Combo sorpresa</h5>
+              <span class="locked-reward-pts">200 puntos</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PASO 6: Historial de Actividad -->
+        <section class="profile-section">
+          <h3 class="profile-section-title">Mi Actividad Reciente</h3>
+          <div class="activity-list" id="activity-list">
+            <!-- Se llena dinámicamente -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Footer del Perfil -->
+      <div class="profile-modal-footer">
+        <button class="btn btn-outline w-full" id="btn-profile-close-bottom" type="button">
+          <span>Cerrar</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
