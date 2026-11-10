@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
   <!-- Estilos principales -->
   <link rel="stylesheet" href="styles.css">
@@ -159,6 +161,20 @@
             <div class="card-footer card-footer-full">
               <button class="btn btn-quiz-block" id="btn-open-quiz" type="button">
                 <span>🎮 Comenzar Quiz</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Bloque 5: Minijuego Arma tu Picka -->
+          <article class="block-card picka-card" id="picka-game-block">
+            <div class="card-icon-wrapper picka-icon-wrapper" aria-hidden="true">
+              <span class="card-icon">🍔</span>
+            </div>
+            <h3 class="card-title">ARMA TU PICKA</h3>
+            <p class="card-text">Memoriza el orden de los ingredientes, arma tu plato y demuestra que tienes buena memoria. ¡Gana puntos extra!</p>
+            <div class="card-footer card-footer-full">
+              <button class="btn btn-quiz-block" id="btn-open-picka-game" type="button">
+                <span>🎮 Jugar ahora</span>
               </button>
             </div>
           </article>
@@ -354,6 +370,98 @@
     </div>
   </div>
 
+  <!-- MODAL DEL MINIJUEGO ARMA TU PICKA -->
+  <div class="picka-modal-overlay" id="picka-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="picka-modal-title">
+    <div class="picka-modal-card">
+      <div class="picka-sticky-close">
+        <button class="modal-close-btn" id="btn-picka-close-x" type="button" aria-label="Cerrar Arma tu Picka">✕</button>
+      </div>
+
+      <section class="picka-screen active" id="picka-screen-selection">
+        <div class="picka-screen-header">
+          <div class="picka-badge-icon" aria-hidden="true">🍽️</div>
+          <h2 class="picka-title" id="picka-modal-title">Arma tu Picka</h2>
+          <p class="picka-subtitle">Elige qué quieres preparar hoy</p>
+        </div>
+        <div class="picka-recipe-grid" id="picka-recipe-list"></div>
+        <p class="picka-live-message" id="picka-selection-message" aria-live="polite"></p>
+        <div class="picka-actions">
+          <button class="btn btn-primary btn-pulse w-full" id="btn-picka-start" type="button" disabled>Comenzar</button>
+        </div>
+      </section>
+
+      <section class="picka-screen" id="picka-screen-memory" aria-labelledby="picka-memory-title">
+        <div class="picka-screen-header">
+          <div class="picka-badge-icon" aria-hidden="true">👀</div>
+          <h2 class="picka-title" id="picka-memory-title">Memoriza el orden</h2>
+          <p class="picka-subtitle">Tienes 5 segundos para memorizar. Después, el orden se ocultará y deberás armarlo de memoria.</p>
+        </div>
+        <div class="picka-memory-countdown" id="picka-memory-countdown" aria-live="polite">5</div>
+        <div class="picka-memory-list" id="picka-memory-list" aria-label="Orden de los ingredientes"></div>
+        <div class="picka-actions">
+          <button class="btn btn-primary" id="btn-picka-skip-memory" type="button">Saltar</button>
+        </div>
+      </section>
+
+      <section class="picka-screen" id="picka-screen-game" aria-label="Juego de armado">
+        <div class="picka-game-toolbar">
+          <p class="picka-instructions">Arrastra los ingredientes al plato. Cuando estén todos, presiona ¡Listo!</p>
+          <button class="btn btn-primary picka-done-btn" id="btn-picka-done" type="button" disabled>✅ ¡Listo!</button>
+        </div>
+        <div class="picka-game-top">
+          <div class="picka-progress-copy">
+            <span id="picka-progress-label">0/0 ingredientes</span>
+            <div class="picka-progress-track" role="progressbar" aria-label="Progreso de la receta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="picka-progress-bar" id="picka-progress-bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="picka-game-layout">
+          <div class="picka-plate-column">
+            <h3>Tu plato</h3>
+            <div class="picka-plate" id="picka-plate" aria-label="Zona ordenable para armar el plato" role="list">
+              <p class="picka-plate-empty" id="picka-plate-empty">Arrastra aquí los ingredientes y ordénalos</p>
+            </div>
+          </div>
+          <div class="picka-ingredients-column">
+            <h3>Ingredientes</h3>
+            <div class="picka-ingredient-grid" id="picka-ingredients" aria-label="Ingredientes disponibles" role="list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="picka-screen" id="picka-screen-results">
+        <div class="picka-confetti-container" id="picka-confetti" aria-hidden="true"></div>
+        <div class="picka-screen-header">
+          <div class="picka-badge-icon" id="picka-result-emoji" aria-hidden="true">🎉</div>
+          <h2 class="picka-title" id="picka-result-title">¡Receta lista!</h2>
+          <p class="picka-subtitle picka-result-summary" id="picka-result-summary"></p>
+        </div>
+        <div class="picka-score-card">
+          <span>Puntos ganados</span>
+          <strong id="picka-result-score" aria-live="polite">0</strong>
+          <span>pts</span>
+        </div>
+        <div class="picka-comparison">
+          <section class="picka-comparison-column">
+            <h3>Tu orden</h3>
+            <ol id="picka-player-order"></ol>
+          </section>
+          <section class="picka-comparison-column">
+            <h3>Orden correcto</h3>
+            <ol id="picka-correct-order"></ol>
+          </section>
+        </div>
+        <p class="picka-result-bonus" id="picka-result-bonus"></p>
+        <p class="picka-save-error" id="picka-save-error" role="alert"></p>
+        <div class="picka-actions picka-result-actions">
+          <button class="btn btn-primary" id="btn-picka-again" type="button">Jugar otra receta</button>
+          <button class="btn btn-outline" id="btn-picka-close-results" type="button">Cerrar</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <!-- MODAL DE PERFIL DE USUARIO DANIELA -->
   <div class="profile-modal-overlay" id="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profile-user-name">
     <div class="profile-modal-card">
@@ -429,68 +537,29 @@
         <!-- PASO 4: Recompensas / Canje -->
         <section class="profile-section">
           <h3 class="profile-section-title">Recompensas Disponibles</h3>
-          
-          <!-- Tarjeta de canje de 10% -->
-          <div class="reward-main-card">
-            <div class="reward-badge-ribbon">⭐ Canje Activo</div>
-            <div class="reward-main-header">
-              <div class="reward-icon">🎟️</div>
-              <div class="reward-main-info">
-                <h4 class="reward-name">Vale de 10% de descuento</h4>
-                <p class="reward-desc">Canjea 50 puntos y obtén un 10% de descuento en tu próximo pedido.</p>
-                <div class="reward-cost">Costo: <strong>50 puntos</strong></div>
-              </div>
-            </div>
+          <div class="rewards-grid" id="rewards-list"></div>
+          <p class="reward-operation-error" id="reward-operation-error" role="alert"></p>
 
-            <!-- Acciones y estado -->
-            <div class="reward-actions">
-              <p class="reward-status-msg" id="reward-status-msg">Verificando puntos...</p>
-              <button class="btn btn-primary btn-redeem" id="btn-redeem-coupon" type="button">
-                <span>Canjear</span>
-              </button>
+          <div class="coupon-success-card" id="coupon-success-card" style="display: none;" aria-live="polite">
+            <div class="coupon-success-header">🎉 ¡Vale canjeado!</div>
+            <p class="coupon-success-name" id="new-coupon-name"></p>
+            <div class="coupon-code-display">
+              <strong class="coupon-code-value" id="new-coupon-code">PICKA-000000</strong>
+              <button class="btn btn-copy-code" id="btn-copy-new-coupon" type="button">Copiar código</button>
             </div>
-
-            <!-- Contenedor animado de celebración al canjear -->
-            <div class="coupon-success-card" id="coupon-success-card" style="display: none;">
-              <div class="coupon-success-header">
-                <span>🎉 ¡Vale canjeado con éxito!</span>
-              </div>
-              <div class="coupon-code-display">
-                <span class="coupon-code-label">Tu código de descuento:</span>
-                <strong class="coupon-code-value" id="new-coupon-code">PICKA-0000</strong>
-              </div>
-              <p class="coupon-hint">Presenta este código en caja o úsalo en tu próxima visita.</p>
+            <div class="qr-display-box">
+              <div id="new-coupon-qr" role="img" aria-label="Código QR del vale"></div>
             </div>
+            <p class="coupon-hint">Muestra este QR o código en caja para redimir tu recompensa.</p>
+            <button class="btn btn-download-qr" id="btn-download-new-coupon" type="button">Descargar QR</button>
+            <p class="coupon-copy-toast" id="coupon-copy-toast" role="status" aria-live="polite"></p>
           </div>
 
           <!-- Historial de vales canjeados -->
-          <div class="claimed-coupons-wrapper" id="claimed-coupons-wrapper" style="display: none;">
-            <h4 class="sub-section-title">Mis Vales Canjeados:</h4>
+          <div class="claimed-coupons-wrapper" id="claimed-coupons-wrapper">
+            <h4 class="sub-section-title">Mis Vales Canjeados</h4>
             <div class="coupons-list" id="coupons-list">
               <!-- Se llena dinámicamente -->
-            </div>
-          </div>
-
-          <!-- PASO 5: Otras recompensas (bloqueadas/próximamente) -->
-          <h4 class="sub-section-title mt-4">Próximos Beneficios:</h4>
-          <div class="locked-rewards-grid">
-            <div class="locked-reward-card">
-              <span class="locked-badge">🔒 Próximamente</span>
-              <div class="locked-reward-icon">🥤</div>
-              <h5 class="locked-reward-name">Bebida gratis</h5>
-              <span class="locked-reward-pts">80 puntos</span>
-            </div>
-            <div class="locked-reward-card">
-              <span class="locked-badge">🔒 Próximamente</span>
-              <div class="locked-reward-icon">🍰</div>
-              <h5 class="locked-reward-name">Postre gratis</h5>
-              <span class="locked-reward-pts">120 puntos</span>
-            </div>
-            <div class="locked-reward-card">
-              <span class="locked-badge">🔒 Próximamente</span>
-              <div class="locked-reward-icon">🎁</div>
-              <h5 class="locked-reward-name">Combo sorpresa</h5>
-              <span class="locked-reward-pts">200 puntos</span>
             </div>
           </div>
         </section>
@@ -512,6 +581,19 @@
         </button>
       </div>
 
+    </div>
+  </div>
+
+  <div class="qr-modal-overlay" id="qr-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+    <div class="qr-modal-card">
+      <button class="modal-close-btn" id="btn-qr-modal-close" type="button" aria-label="Cerrar código QR">✕</button>
+      <h2 class="qr-modal-title" id="qr-modal-title">Vale Pickadeli</h2>
+      <p class="qr-modal-name" id="qr-modal-name"></p>
+      <div class="qr-display-box qr-modal-display">
+        <div id="qr-modal-code" role="img" aria-label="Código QR del vale"></div>
+      </div>
+      <p class="qr-modal-code-text" id="qr-modal-code-text"></p>
+      <button class="btn btn-download-qr" id="btn-download-modal-qr" type="button">Descargar QR</button>
     </div>
   </div>
 

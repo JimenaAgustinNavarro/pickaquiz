@@ -2102,6 +2102,333 @@ button {
   color: var(--gris-medio);
 }
 
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rewards-grid .reward-main-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  margin: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.rewards-grid .reward-main-card.reward-unavailable {
+  opacity: 0.6;
+}
+
+.rewards-grid .reward-main-header {
+  flex: 1;
+}
+
+.rewards-grid .reward-actions {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.rewards-grid .reward-status-msg {
+  min-height: 36px;
+}
+
+.reward-operation-error {
+  min-height: 0;
+  margin-top: 8px;
+  color: var(--rojo-alerta);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reward-operation-error:empty {
+  display: none;
+}
+
+.coupon-success-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--crema-fondo);
+  border-color: var(--verde-principal);
+}
+
+.coupon-success-card.coupon-celebrate::before,
+.coupon-success-card.coupon-celebrate::after {
+  position: absolute;
+  top: -18px;
+  z-index: 0;
+  font-size: 23px;
+  pointer-events: none;
+  animation: coupon-confetti 1.5s ease-out forwards;
+}
+
+.coupon-success-card.coupon-celebrate::before {
+  content: "🎉 ✨ 🎊";
+  left: 12%;
+}
+
+.coupon-success-card.coupon-celebrate::after {
+  content: "🎊 🎉 ✨";
+  right: 12%;
+  animation-delay: 0.15s;
+}
+
+.coupon-success-header,
+.coupon-success-name,
+.coupon-code-display,
+.coupon-hint,
+.coupon-success-card .btn,
+.coupon-copy-toast,
+.coupon-success-card .qr-display-box {
+  position: relative;
+  z-index: 1;
+}
+
+.coupon-success-name {
+  margin: 4px 0 10px;
+  color: var(--gris-oscuro);
+  font-weight: 700;
+}
+
+.coupon-code-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 10px;
+  padding: 8px;
+  border: 1px dashed rgba(85, 139, 47, 0.45);
+  border-radius: 12px;
+  background: var(--blanco);
+}
+
+.coupon-code-value,
+.coupon-item-code,
+.qr-modal-code-text {
+  font-family: Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.coupon-code-value {
+  padding: 8px 10px;
+  border: 1px dashed var(--verde-principal);
+  border-radius: 8px;
+  background: var(--blanco);
+  color: var(--verde-oscuro);
+  font-size: 22px;
+  letter-spacing: 1.5px;
+}
+
+.qr-display-box {
+  display: flex;
+  width: fit-content;
+  min-width: 104px;
+  min-height: 104px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--blanco);
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-display-box canvas,
+.qr-display-box img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-copy-code,
+.btn-download-qr,
+.btn-view-qr {
+  padding: 8px 14px;
+  border: 1px solid var(--verde-oscuro);
+  border-radius: var(--radius-full);
+  background: var(--verde-principal);
+  color: var(--blanco);
+  font-size: 12px;
+  font-weight: 700;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-copy-code:hover,
+.btn-download-qr:hover,
+.btn-view-qr:hover {
+  transform: translateY(-1px);
+  background: var(--verde-oscuro);
+}
+
+.btn-copy-code:focus-visible,
+.btn-download-qr:focus-visible,
+.btn-view-qr:focus-visible,
+.btn-redeem:focus-visible,
+.qr-modal-card .modal-close-btn:focus-visible {
+  outline: 3px solid var(--naranja-acento);
+  outline-offset: 3px;
+}
+
+.coupon-copy-toast {
+  min-height: 18px;
+  margin-top: 4px;
+  color: var(--verde-oscuro);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.coupon-copy-toast.is-error {
+  color: var(--rojo-alerta);
+}
+
+.claimed-coupons-wrapper {
+  margin-top: 20px;
+}
+
+.coupons-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.coupon-history-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 14px;
+  border: 1.5px solid var(--verde-principal);
+  border-radius: 16px;
+  background: var(--crema-fondo);
+  box-shadow: var(--shadow-sm);
+}
+
+.coupon-history-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coupon-history-card .coupon-item-desc {
+  font-size: 13px;
+}
+
+.coupon-history-card .coupon-item-code {
+  width: fit-content;
+  padding: 3px 6px;
+  border: 1px dashed rgba(85, 139, 47, 0.45);
+  border-radius: 6px;
+  background: var(--blanco);
+  color: var(--verde-oscuro);
+  font-size: 11px;
+}
+
+.coupon-history-qr {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 104px;
+  min-height: 104px;
+  margin: 0;
+  padding: 12px;
+}
+
+.btn-view-qr {
+  grid-column: 1 / -1;
+  justify-self: stretch;
+}
+
+.btn-view-qr:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.coupon-history-empty {
+  grid-column: 1 / -1;
+  padding: 14px;
+  border-radius: 12px;
+  background: #F8FAF5;
+  color: var(--gris-medio);
+  font-size: 13px;
+}
+
+.qr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.qr-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-modal-card {
+  position: relative;
+  width: min(100%, 440px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 32px 24px 24px;
+  border: 2px solid var(--verde-principal);
+  border-radius: 22px;
+  background: var(--blanco);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transform: scale(0.92);
+  transition: transform 0.2s ease;
+}
+
+.qr-modal-overlay.open .qr-modal-card {
+  transform: scale(1);
+}
+
+.qr-modal-card .modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}
+
+.qr-modal-title {
+  color: var(--gris-oscuro);
+  font-size: 20px;
+}
+
+.qr-modal-name {
+  margin-top: 4px;
+  color: var(--gris-medio);
+  font-weight: 600;
+}
+
+.qr-modal-display {
+  min-width: 344px;
+  min-height: 344px;
+  margin: 14px auto;
+}
+
+.qr-modal-code-text {
+  margin-bottom: 12px;
+  color: var(--verde-oscuro);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@keyframes coupon-confetti {
+  0% { opacity: 0; transform: translateY(-6px) rotate(0deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(80px) rotate(25deg); }
+}
+
 /* 5. Recompensas Bloqueadas */
 .locked-rewards-grid {
   display: grid;
@@ -2209,6 +2536,11 @@ button {
     border-radius: 20px;
   }
 
+  .rewards-grid,
+  .coupons-list {
+    grid-template-columns: 1fr;
+  }
+
   .profile-header {
     padding: 22px 20px;
   }
@@ -2262,6 +2594,816 @@ button {
   .profile-modal-footer {
     padding: 14px 20px;
   }
+
+  .qr-modal-overlay {
+    padding: 10px;
+  }
+
+  .qr-modal-card {
+    width: 95%;
+    padding: 32px 16px 20px;
+  }
+
+  .qr-modal-display {
+    width: fit-content;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .coupon-success-card .qr-display-box {
+    min-width: 164px;
+    min-height: 164px;
+  }
+
+  .coupon-history-qr {
+    min-width: 104px;
+    min-height: 104px;
+  }
 }
 
+/* ==========================================================
+   10. MINIJUEGO ARMA TU PICKA
+   ========================================================== */
+.picka-card {
+  border: 1.5px solid rgba(124, 179, 66, 0.4);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCF8 100%);
+}
 
+.picka-card:hover {
+  border-color: var(--verde-principal);
+}
+
+.picka-icon-wrapper {
+  background: linear-gradient(135deg, rgba(124, 179, 66, 0.15), rgba(255, 193, 7, 0.2));
+  border-color: rgba(124, 179, 66, 0.35);
+}
+
+.btn-quiz-block:focus-visible,
+.picka-modal-card button:focus-visible {
+  outline: 3px solid var(--naranja-acento);
+  outline-offset: 3px;
+}
+
+.picka-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.picka-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.picka-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 32px;
+  border: 2px solid var(--verde-principal);
+  border-radius: 24px;
+  background: var(--blanco);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+.picka-modal-overlay.open .picka-modal-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.picka-sticky-close {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 0;
+}
+
+.picka-sticky-close .modal-close-btn {
+  top: -14px;
+  right: -18px;
+}
+
+.picka-screen {
+  display: none;
+}
+
+.picka-screen.active {
+  display: block;
+  animation: picka-screen-in 0.25s ease both;
+}
+
+.picka-screen-header {
+  padding: 8px 42px 18px;
+  text-align: center;
+}
+
+.picka-badge-icon {
+  margin-bottom: 4px;
+  font-size: 40px;
+  line-height: 1.3;
+}
+
+.picka-title {
+  color: var(--gris-oscuro);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.picka-subtitle {
+  margin-top: 4px;
+  color: var(--gris-medio);
+}
+
+.picka-recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.picka-recipe-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px;
+  border: 2px solid #E8EDE3;
+  border-radius: 16px;
+  background: #FFFFFF;
+  color: var(--gris-oscuro);
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.picka-recipe-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--verde-principal);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.picka-recipe-card.selected {
+  border-color: var(--verde-oscuro);
+  background: #F7FAF2;
+  box-shadow: 0 0 0 2px rgba(124, 179, 66, 0.18);
+}
+
+.picka-recipe-emoji {
+  font-size: 42px;
+}
+
+.picka-recipe-name {
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.picka-recipe-description {
+  min-height: 42px;
+  margin-top: 6px;
+  color: var(--gris-medio);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.picka-recipe-difficulty {
+  margin: 8px 0;
+  color: var(--naranja-acento);
+  letter-spacing: 2px;
+}
+
+.picka-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.picka-chip {
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: var(--radius-full);
+  background: var(--crema-fondo);
+  color: var(--gris-oscuro);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.picka-memory-countdown {
+  display: grid;
+  width: 92px;
+  height: 92px;
+  place-items: center;
+  margin: 0 auto 16px;
+  border: 6px solid var(--verde-principal);
+  border-radius: 50%;
+  background: var(--crema-fondo);
+  color: var(--verde-oscuro);
+  font-size: 46px;
+  font-weight: 800;
+  box-shadow: 0 5px 18px rgba(85, 139, 47, 0.18);
+}
+
+.picka-countdown-tick {
+  animation: picka-countdown-pulse 0.25s ease;
+}
+
+.picka-memory-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.picka-memory-list.is-hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+.picka-memory-item {
+  display: grid;
+  grid-template-columns: 30px 42px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(124, 179, 66, 0.28);
+  border-radius: 12px;
+  background: #F7FAF2;
+  color: var(--gris-oscuro);
+  animation: picka-memory-item-in 0.25s ease both;
+}
+
+.picka-memory-number {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--verde-principal);
+  color: var(--blanco);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.picka-memory-emoji {
+  font-size: 28px;
+  text-align: center;
+}
+
+.picka-memory-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.picka-live-message,
+.picka-save-error {
+  min-height: 22px;
+  margin-top: 10px;
+  color: var(--rojo-alerta);
+  font-size: 13px;
+  text-align: center;
+}
+
+.picka-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.picka-actions .btn {
+  min-height: 46px;
+  padding: 11px 20px;
+  font-weight: 700;
+}
+
+.picka-actions .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  animation: none;
+  transform: none;
+}
+
+.picka-game-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-right: 36px;
+}
+
+.picka-game-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-right: 36px;
+}
+
+.picka-game-toolbar .picka-instructions {
+  flex: 1;
+  margin: 8px 0;
+  text-align: left;
+}
+
+.picka-done-btn {
+  flex-shrink: 0;
+  min-width: 130px;
+  padding: 10px 18px;
+  font-weight: 800;
+  animation: pulse-btn 2.2s infinite ease-in-out;
+}
+
+.picka-done-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  animation: none;
+  transform: none;
+}
+
+.picka-progress-copy {
+  flex: 1;
+  color: var(--gris-oscuro);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.picka-progress-track {
+  height: 9px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: #E8EDE3;
+}
+
+.picka-progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--verde-principal), var(--verde-oscuro));
+  transition: width 0.35s ease;
+}
+
+.picka-instructions {
+  margin: 14px 0 10px;
+  color: var(--gris-medio);
+  font-size: 12px;
+  text-align: center;
+}
+
+.picka-game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.picka-plate-column h3,
+.picka-ingredients-column h3 {
+  margin-bottom: 8px;
+  color: var(--gris-oscuro);
+  font-size: 15px;
+  text-align: center;
+}
+
+.picka-plate {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  min-height: 310px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  margin: 0 auto;
+  padding: 18px;
+  overflow: auto;
+  border: 3px dashed var(--verde-principal);
+  border-radius: 30px;
+  background: var(--crema-fondo);
+  box-shadow: inset 0 3px 14px rgba(85, 139, 47, 0.14);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.picka-plate.sortable-drag,
+.picka-plate.sortable-ghost {
+  background-color: #F1F8E9;
+  border-color: var(--verde-oscuro);
+}
+
+.picka-plate-empty {
+  align-self: center;
+  margin: auto;
+  color: var(--gris-medio);
+  font-size: 13px;
+  text-align: center;
+}
+
+.picka-plate-layer {
+  display: flex;
+  width: min(100%, 280px);
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 8px 14px;
+  border: 1px solid rgba(85, 139, 47, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-sm);
+  font-size: 13px;
+  font-weight: 700;
+  animation: picka-fall-in 0.4s ease both;
+}
+
+.picka-layer-emoji {
+  font-size: 28px;
+}
+
+.picka-ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.picka-ingredient-card {
+  display: flex;
+  min-width: 0;
+  min-height: 88px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 5px;
+  border: 1px solid #E8EDE3;
+  border-radius: 12px;
+  background: var(--blanco);
+  color: var(--gris-oscuro);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  animation: picka-wiggle 3s ease-in-out infinite;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.picka-ingredient-card:nth-child(2n) {
+  animation-delay: 0.4s;
+}
+
+.picka-ingredient-card:nth-child(3n) {
+  animation-delay: 0.8s;
+}
+
+.picka-ingredient-card:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-card);
+  animation-play-state: paused;
+}
+
+.picka-ingredient-card:active {
+  cursor: grabbing;
+}
+
+.picka-ingredient-emoji {
+  font-size: 29px;
+  line-height: 1.2;
+}
+
+.picka-ingredient-name {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.picka-shake {
+  animation: picka-shake 0.4s ease !important;
+}
+
+.picka-correct-flash {
+  animation: picka-plate-flash 0.35s ease;
+}
+
+.picka-score-card {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px auto;
+  color: var(--verde-oscuro);
+  font-weight: 700;
+  text-align: center;
+}
+
+.picka-score-card > span {
+  color: var(--gris-medio);
+  font-size: 13px;
+}
+
+.picka-score-card strong {
+  font-size: 52px;
+  line-height: 1;
+}
+
+.picka-result-actions {
+  margin-top: 20px;
+}
+
+.picka-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0 10px;
+}
+
+.picka-comparison-column {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid rgba(124, 179, 66, 0.28);
+  border-radius: 14px;
+  background: #FAFCF8;
+}
+
+.picka-comparison-column h3 {
+  margin-bottom: 8px;
+  color: var(--gris-oscuro);
+  font-size: 14px;
+}
+
+.picka-comparison-column ol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  list-style: none;
+  counter-reset: picka-order;
+}
+
+.picka-comparison-column li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--gris-oscuro);
+  font-size: 11px;
+  line-height: 1.35;
+  counter-increment: picka-order;
+}
+
+.picka-comparison-column li::before {
+  content: counter(picka-order) ".";
+  flex: 0 0 18px;
+  color: var(--gris-medio);
+  font-weight: 700;
+}
+
+.picka-comparison-status {
+  width: 16px;
+  flex-shrink: 0;
+  font-weight: 900;
+}
+
+.picka-comparison-correct .picka-comparison-status {
+  color: var(--verde-oscuro);
+}
+
+.picka-comparison-incorrect .picka-comparison-status {
+  color: var(--rojo-alerta);
+}
+
+.picka-result-summary {
+  color: var(--gris-oscuro);
+  font-weight: 700;
+  text-align: center;
+}
+
+.picka-result-bonus {
+  margin-top: 4px;
+  color: var(--verde-oscuro);
+  font-weight: 800;
+  text-align: center;
+}
+
+.picka-confetti-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.picka-confetti-piece {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 24px;
+  animation: picka-confetti 2s ease-out var(--confetti-delay) forwards;
+}
+
+@keyframes picka-screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes picka-countdown-pulse {
+  50% { transform: scale(1.12); }
+}
+
+@keyframes picka-memory-item-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes picka-wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes picka-fall-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes picka-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+@keyframes picka-plate-flash {
+  50% { background-color: #E6F3D9; border-color: var(--verde-oscuro); }
+}
+
+@keyframes picka-confetti {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--confetti-x), -220px) rotate(35deg) scale(1.2); }
+}
+
+@media (max-width: 900px) {
+  .picka-game-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .picka-plate {
+    max-width: 300px;
+    min-height: 280px;
+  }
+
+  .picka-ingredient-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .picka-modal-card {
+    padding: 26px 20px;
+    border-radius: 20px;
+  }
+
+  .picka-game-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .picka-plate {
+    max-width: 300px;
+    min-height: 230px;
+  }
+
+  .picka-ingredient-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .picka-modal-overlay {
+    padding: 10px;
+  }
+
+  .picka-modal-card {
+    width: 95%;
+    max-height: 95vh;
+    padding: 22px 16px;
+  }
+
+  .picka-recipe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .picka-recipe-card {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 10px;
+    padding: 12px;
+    text-align: left;
+  }
+
+  .picka-recipe-emoji {
+    grid-row: span 3;
+    align-self: center;
+    font-size: 34px;
+  }
+
+  .picka-recipe-name,
+  .picka-recipe-description,
+  .picka-recipe-difficulty,
+  .picka-chip-list {
+    justify-self: start;
+  }
+
+  .picka-recipe-description {
+    min-height: 0;
+  }
+
+  .picka-recipe-difficulty {
+    margin: 3px 0;
+  }
+
+  .picka-chip-list {
+    grid-column: 2;
+  }
+
+  .picka-screen-header {
+    padding-right: 34px;
+    padding-left: 34px;
+  }
+
+  .picka-title {
+    font-size: 21px;
+  }
+
+  .picka-game-top {
+    align-items: flex-start;
+    gap: 10px;
+    padding-right: 30px;
+    flex-wrap: wrap;
+  }
+
+  .picka-game-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 30px;
+  }
+
+  .picka-game-toolbar .picka-instructions {
+    text-align: center;
+  }
+
+  .picka-done-btn {
+    width: 100%;
+  }
+
+  .picka-memory-list {
+    grid-template-columns: 1fr;
+  }
+
+  .picka-comparison {
+    gap: 8px;
+  }
+
+  .picka-comparison-column {
+    padding: 9px;
+  }
+
+  .picka-comparison-column li {
+    font-size: 10px;
+  }
+
+  .picka-actions,
+  .picka-result-actions {
+    flex-direction: column;
+  }
+
+  .picka-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .picka-ingredient-card,
+  .picka-screen.active,
+  .picka-plate-layer,
+  .picka-confetti-piece {
+    animation: none;
+  }
+}
